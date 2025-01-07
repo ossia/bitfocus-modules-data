@@ -30,16 +30,3 @@ for NODE_ARCH in linux-arm64.tar.xz linux-x64.tar.xz darwin-x64.tar.gz darwin-ar
         7z a bitfocus-modules-data-$ARCH_NOEXT.zip bitfocus-modules-data
     )
 done
-
-#
-# win-x64.zip
-
-#https://nodejs.org/dist/v22.12.0/node-v22.12.0-linux-arm64.tar.xz
-#https://nodejs.org/dist/v22.12.0/node-v22.12.0-linux-x64.tar.xz
-
-#https://nodejs.org/dist/v22.12.0/node-v22.12.0-darwin-x64.tar.gz
-#https://nodejs.org/dist/v22.12.0/node-v22.12.0-darwin-arm64.tar.gz
-
-#https://nodejs.org/dist/v22.12.0/node-v22.12.0-win-x64.zip
-#https://nodejs.org/dist/v18.20.5/node-v18.20.5-win-x64.zip
-

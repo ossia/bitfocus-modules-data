@@ -1,11 +1,16 @@
 {
   "name": "Bitfocus Companion modules",
   "raw_name": "companion-modules",
-  "kind": "presets",
+  "kind": "media",
   "short": "Modules and Node.js for Bitfocus Companion support",
   "key": "7b08697a-447c-4768-be03-66bf60615b5c",
   "license": "MIT - Bitfocus and the Bitfocus Companion modules authors.",
   "size": "600M",
   "version": 1,
-  "url": "https://github.com/bitfocus/companion"
+  "url": "https://github.com/bitfocus/companion",
+  "windows-amd64": "https://github.com/ossia/bitfocus-modules-data/releases/download/v1.0.0/bitfocus-modules-data-windows-x64.zip",
+  "linux-amd64": "https://github.com/ossia/bitfocus-modules-data/releases/download/v1.0.0/bitfocus-modules-data-linux-x64.zip",
+  "darwin-amd64": "https://github.com/ossia/bitfocus-modules-data/releases/download/v1.0.0/bitfocus-modules-data-darwin-x64.zip",
+  "linux-arm64": "https://github.com/ossia/bitfocus-modules-data/releases/download/v1.0.0/bitfocus-modules-data-linux-arm64.zip",
+  "darwin-arm64": "https://github.com/ossia/bitfocus-modules-data/releases/download/v1.0.0/bitfocus-modules-data-darwin-arm64.zip"
 }
