@@ -1,0 +1,11 @@
+{
+  "name": "Bitfocus Companion modules",
+  "raw_name": "companion-modules",
+  "kind": "presets",
+  "short": "Modules and Node.js for Bitfocus Companion support",
+  "key": "7b08697a-447c-4768-be03-66bf60615b5c",
+  "license": "MIT - Bitfocus and the Bitfocus Companion modules authors.",
+  "size": "600M",
+  "version": 1,
+  "url": "https://github.com/bitfocus/companion"
+}
