@@ -1,0 +1,4 @@
+# Local build outputs
+/bitfocus-modules-data/
+/bitfocus-modules-data-*.zip
+/out/

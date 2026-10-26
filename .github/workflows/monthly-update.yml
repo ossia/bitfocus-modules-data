@@ -1,0 +1,106 @@
+name: Monthly module update
+
+# Rebuilds the bundles from the Companion module store, publishes them as a new
+# release and points addon.json at it. score-packages reads addon.json from
+# master, so the commit at the end is what ships the update to users.
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'   # 06:00 UTC on the 1st of each month
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Release even if no module or Node.js version changed
+        type: boolean
+        default: false
+      max-api-major:
+        description: Newest module API major version score's host supports
+        default: '1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monthly-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install 7-Zip
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq p7zip-full
+
+      - name: Next version
+        id: ver
+        run: |
+          prev=$(jq -r .version addon.json)
+          next=$((prev + 1))
+          echo "version=$next" >> "$GITHUB_OUTPUT"
+          echo "tag=v1.0.$next" >> "$GITHUB_OUTPUT"
+
+      - name: Point addon.json at the new release
+        env:
+          VERSION: ${{ steps.ver.outputs.version }}
+          TAG: ${{ steps.ver.outputs.tag }}
+        run: |
+          base="https://github.com/${GITHUB_REPOSITORY}/releases/download/$TAG/bitfocus-modules-data"
+          jq --argjson v "$VERSION" --arg b "$base" '
+            .version = $v
+            | ."windows-x86_64" = "\($b)-win-x64.zip"   | ."windows-amd64" = "\($b)-win-x64.zip"
+            | ."linux-x86_64"   = "\($b)-linux-x64.zip" | ."linux-amd64"   = "\($b)-linux-x64.zip"
+            | ."linux-aarch64"  = "\($b)-linux-arm64.zip"
+            | ."darwin-x86_64"  = "\($b)-darwin-x64.zip" | ."darwin-amd64" = "\($b)-darwin-x64.zip"
+            | ."darwin-aarch64" = "\($b)-darwin-arm64.zip"
+          ' addon.json > addon.json.new
+          mv addon.json.new addon.json
+
+      - name: Build the bundles
+        run: python3 -I scripts/build-bundle.py out --max-api-major "${{ inputs.max-api-major || '1' }}"
+
+      - name: Skip when nothing changed
+        id: diff
+        run: |
+          if [ "${{ inputs.force }}" != "true" ] && cmp -s out/versions.txt versions.txt; then
+            echo "No module or Node.js version changed since the last release."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            diff -u versions.txt out/versions.txt > out/changes.diff || true
+            cp out/versions.txt versions.txt
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Record sizes
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          # The manifest's size is the largest download, in the M/G form score shows.
+          bytes=$(stat -c %s out/*.zip | sort -n | tail -1)
+          jq --arg s "$((bytes / 1000000))M" '.size = $s' addon.json > addon.json.new
+          mv addon.json.new addon.json
+
+      - name: Release
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.ver.outputs.tag }}
+        run: |
+          {
+            echo "Automated monthly rebuild from the Companion module store."
+            echo
+            echo '```diff'
+            head -c 60000 out/changes.diff
+            echo '```'
+          } > out/notes.md
+          gh release create "$TAG" out/*.zip --title "$TAG" --notes-file out/notes.md
+
+      # Only after the assets exist: addon.json on master is what users fetch.
+      - name: Commit addon.json
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add addon.json versions.txt
+          git commit -m "${{ steps.ver.outputs.tag }}: monthly module update"
+          git push
