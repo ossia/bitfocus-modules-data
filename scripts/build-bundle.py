@@ -7,7 +7,11 @@
 # newest non-deprecated release of every connection module, then add the Node.js
 # runtimes those modules declare, once per platform.
 #
-# Usage: build-bundle.py <out-dir> [--max-api-major N] [--include-all-licenses]
+# Copyleft modules (GPL, LGPL, AGPL) are included: score is GPL. Modules whose
+# license the store does not know are not, since nothing says they may be
+# redistributed.
+#
+# Usage: build-bundle.py <out-dir> [--max-api-major N] [--include-unknown-licenses]
 # Writes <out-dir>/bitfocus-modules-data-<platform>.zip and <out-dir>/versions.txt.
 
 import argparse, io, json, os, shutil, subprocess, sys, tarfile, urllib.request, zipfile
@@ -35,7 +39,7 @@ def api_major(v):
     except ValueError:
         return 0
 
-def pick_version(name, max_major, all_licenses):
+def pick_version(name, max_major, unknown_licenses):
     info = json.loads(get(f"{API}/connection/{name}"))
     ok = [v for v in info["versions"]
           if v.get("tarUrl") and api_major(v["apiVersion"]) <= max_major]
@@ -43,7 +47,7 @@ def pick_version(name, max_major, all_licenses):
     v = next((v for v in ok if not v["isPrerelease"]), None) or next(iter(ok), None)
     if v is None:
         return None
-    if not all_licenses and v.get("licenseCategory") in ("COPYLEFT", "UNKNOWN"):
+    if not unknown_licenses and v.get("licenseCategory", "UNKNOWN") == "UNKNOWN":
         return None
     return v
 
@@ -94,7 +98,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("out")
     ap.add_argument("--max-api-major", type=int, default=1)
-    ap.add_argument("--include-all-licenses", action="store_true")
+    ap.add_argument("--include-unknown-licenses", action="store_true")
     args = ap.parse_args()
 
     out = os.path.abspath(args.out)
@@ -109,7 +113,7 @@ def main():
 
     with ThreadPoolExecutor(10) as ex:
         picked = dict(zip(names, ex.map(
-            lambda n: pick_version(n, args.max_api_major, args.include_all_licenses), names)))
+            lambda n: pick_version(n, args.max_api_major, args.include_unknown_licenses), names)))
     picked = {n: v for n, v in picked.items() if v}
     with ThreadPoolExecutor(10) as ex:
         runtimes = dict(zip(picked, ex.map(lambda n: fetch_module(n, picked[n], mods), picked)))
@@ -122,7 +126,7 @@ def main():
         for m, v in nodes.items():
             f.write(f"node{m} {v}\n")
         for n in sorted(picked):
-            f.write(f"{n} {picked[n]['id']} api{picked[n]['apiVersion']}\n")
+            f.write(f"{n} {picked[n]['id']} api{picked[n]['apiVersion']} {picked[n].get('license')}\n")
 
     shutil.copy(os.path.join(os.path.dirname(__file__), "..", "addon.json"), stage)
     for plat, suffix in PLATFORMS.items():
