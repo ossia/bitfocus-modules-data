@@ -1,6 +1,6 @@
 node18 18.20.8
 node22 22.23.4
-1stpass-1stpass v1.2.1 api1.14.1 MIT
+1stpass-1stpass v1.3.0 api1.14.1 MIT
 7thsensedesign-delta v1.0.3 api1.11.2 MIT
 PosiStageNet-protocol v1.2.0 api1.11.3 MIT
 ableton-osc v1.2.2 api1.12.1 MIT
@@ -71,7 +71,7 @@ avocet-landscape v1.0.3 api1.4.3 MIT
 avolites-ai v1.0.3 api1.11.2 MIT
 avolites-titan v3.1.2 api1.11.3 MIT
 avproconnect-acmx1616-auhd v1.0.1 api1.11.2 MIT
-avproedge-mxnet v1.1.2 api1.11.3 MIT
+avproedge-mxnet v1.1.3 api1.11.3 MIT
 avstumpfl-pixera v3.2.3 api1.1.1 MIT
 aws-ec2 v1.0.1 api1.11.3 MIT
 aws-elementallive v1.1.0 api1.11.0 MIT
@@ -211,7 +211,7 @@ denon-receiver v2.0.0 api1.2.1 MIT
 denon-recorder v2.4.1 api1.11.3 MIT
 depili-clock-8001 v6.1.1 api1.4.3 MIT
 devantech-ds v2.0.0 api1.0.1 MIT
-devcore-mixingstation v1.0.1 api1.11.3 MIT
+devcore-mixingstation v2.0.2 api1.12.1 MIT
 dexon-dimax v1.0.4 api1.11.2 MIT
 dexon-divip v1.0.3 api1.11.2 MIT
 dexon-matrix v1.0.2 api1.11.2 MIT
@@ -285,7 +285,7 @@ gammacontrol-gmaestro v1.0.2 api1.11.2 MIT
 gdsys-muxkvmswitch v1.0.0 api1.5.1 MIT
 gefen-dvimatrix v1.0.2 api1.11.2 MIT
 genelec-smart-ip v1.0.0 api1.14.1 MIT
-generic-artnet v2.0.1 api1.0.2 MIT
+generic-artnet v2.0.3 api1.4.3 MIT
 generic-bridge 0.9.0 api1.6.0 MIT
 generic-dataentry v1.0.3 api1.12.1 MIT
 generic-emberplus v2.9.2 api1.14.1 MIT
@@ -335,7 +335,7 @@ greengo-intercom v1.0.2 api1.4.1 MIT
 greenhippo-hippotizer-rest v1.0.1 api1.11.3 MIT
 groupme-webhooks v1.0.1 api1.11.2 MIT
 gudesystems-smartpdu v1.0.1 api1.11.3 MIT
-h2r-graphics v3.10.0 api1.14.1 MIT
+h2r-graphics v3.10.1 api1.14.1 MIT
 h2r-layouts v1.2.1 api1.12.1 MIT
 haivision-connectdvr v2.0.2 api1.0.2 MIT
 haivision-kbencoder v2.0.1 api1.0.2 MIT
@@ -391,13 +391,14 @@ klang-immersive v1.0.2 api1.4.1 MIT
 klvr-chargerpro v2.0.1 api1.11.3 MIT
 knowcore-checkin v1.0.7 api1.14.1 MIT
 kommander-t3 v1.0.0 api1.2.1 MIT
-kramer-matrix v2.1.1 api1.7.0 MIT
+kramer-matrix v2.1.2 api1.7.0 MIT
 kramer-vp727 v1.0.4 api1.11.2 MIT
 kramer-vp734 v1.0.1 api1.11.2 MIT
 kramer-vp773a v1.0.1 api1.11.2 MIT
 kramer-vs41h v1.0.1 api1.11.2 MIT
 kxwell-ptz v1.0.0 api1.13.2 MIT
 lea-amplifier v2.0.2 api1.4.1 MIT
+leader-zen v1.0.1 api1.14.1 MIT
 leaderphabrix-lpx-qx v1.0.1 api1.14.1 MIT
 leadled-clockotron v1.0.3 api1.11.2 MIT
 leafcoders-titler v1.0.1 api1.11.2 MIT
@@ -412,6 +413,7 @@ lightware-lw3 v2.0.5 api1.4.1 MIT
 lilliput-monitor v1.1.1 api1.13.2 MIT
 limagiran-holyrics v1.2.2 api1.8.0 MIT
 linkbox-remote v1.2.3 api1.11.2 MIT
+livelogix-cadence v1.4.1 api1.14.1 MIT
 livemind-recorder v1.0.1 api1.11.2 MIT
 lofas-ndistudioclock v0.1.0 api1.6.0 MIT
 logos-proclaim v1.2.4 api1.14.1 MIT
@@ -427,7 +429,7 @@ mackie-dlzcreator v1.0.5 api1.14.1 MIT
 madrix-aura v1.0.1 api1.14.1 MIT
 magewell-director v1.0.0 api1.5.1 MIT
 magewell-proconvert-decoder v3.0.0 api1.11.3 MIT
-magewell-ultrastream v1.0.1 api1.11.3 MIT
+magewell-ultrastream v1.1.1 api1.12.1 MIT
 magichome-bulb v1.0.1 api1.11.2 MIT
 magicsoft-recorder v1.0.1 api1.11.2 MIT
 magnimage-mig-ec v1.0.0 api1.4.3 MIT
@@ -556,7 +558,7 @@ pnh-opencountdown v2.0.2 api1.0.2 LGPL-3.0
 pnh-soundr v2.0.2 api1.0.2 LGPL-3.0
 polecam-autopod v1.0.3 api1.4.3 MIT
 powersoft-amplifiers v1.0.1 api1.11.3 MIT
-presentationtools-aps v2.9.1 api1.7.1 MIT
+presentationtools-aps v2.11.0 api1.14.1 MIT
 presentationtools-cuetimer v2.2.2 api1.7.1 MIT
 protopie-bridge v1.0.3 api1.11.2 MIT
 prsi-ipower v1.0.3 api1.11.2 MIT
@@ -678,7 +680,7 @@ stagetec-emberplus-avatus v1.0.4 api1.11.3 MIT
 stagetec-emberplus-nxct v1.0.1 api1.12.1 MIT
 stagetec-rcp v1.0.6 api1.11.3 MIT
 stagetec-xci v1.3.1 api1.14.1 MIT
-stagetimerio-api v2.6.1 api1.14.1 MIT
+stagetimerio-api v2.7.1 api1.14.1 MIT
 studiocoast-vmix v4.2.0 api1.12.0 MIT
 symetrix-dsp v2.0.1 api1.1.1 MIT
 syncer-live v1.0.0 api1.4.1 MIT
@@ -712,13 +714,14 @@ tesmart-hdmimatrix v2.0.0 api1.4.1 MIT
 textmebot-whatsappapi v1.0.3 api1.11.3 MIT
 theatrixx-xpresscue v2.0.0 api1.6.0 MIT
 thelightingcontroller v1.1.4 api1.11.2 MIT
+thenoteslist-thenoteslist v1.2.6 api1.14.1 MIT
 thingm-blink1 v2.0.3 api1.1.1 MIT
 tieline-gateway v1.0.3 api1.7.1 MIT
 timemachines-clock v2.1.1 api1.10.0 MIT
 tinkerlist-cuez-automator v1.0.0 api1.10.0 MIT
 toggl-track v2.1.3 api1.13.4 MIT
 toolsonair-justincapture v1.2.0 api1.14.1 MIT
-tow-mixeffect v2.0.6 api1.8.0 MIT
+tow-mixeffect v2.1.1 api1.14.1 MIT
 tplink-kasasmartbulb v2.1.0 api1.8.0 MIT
 tplink-kasasmartdimmer v2.0.1 api1.4.1 MIT
 tplink-kasasmartplug v2.2.4 api1.14.1 MIT
@@ -744,6 +747,7 @@ vbaudio-voicemeeter v2.2.1 api1.13.2 MIT
 vdo-ninja v2.5.0 api1.12.1 MIT
 vdwall-lvp615 v1.0.0 api1.11.2 MIT
 ventuz-director v2.0.2 api1.2.1 MIT
+venucable-planner v1.7.1 api1.12.1 MIT
 vicreo-broadcast-titles v1.0.0 api1.11.3 MIT
 vicreo-display v1.0.1 api1.7.1 MIT
 vicreo-hotkey v4.11.0 api1.12.1 MIT
@@ -751,6 +755,7 @@ vicreo-timer v1.2.0 api1.14.1 MIT
 videocom-zoom-bridge v1.0.1 api1.11.2 MIT
 videolan-vlc v2.7.1 api1.14.1 MIT
 videopathe-qmonitor v1.0.3 api1.14.1 MIT
+videopathe-qplayer v1.0.1 api1.14.1 MIT
 videopathe-qtimer v1.1.2 api1.14.1 MIT
 videowalrus-hyperremote v1.0.3 api1.14.1 MIT
 videowalrus-simpleclock v1.4.2 api1.14.1 MIT
